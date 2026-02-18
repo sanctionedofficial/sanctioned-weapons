@@ -1,14 +1,11 @@
 :root{
   --bg:#070a10;
   --panel: rgba(255,255,255,.06);
-  --panel2: rgba(255,255,255,.04);
   --stroke: rgba(255,255,255,.10);
-  --stroke2: rgba(255,255,255,.14);
   --text:#eaf2ff;
   --muted:#9fb2cc;
-  --accent:#7c5cff;   /* purple */
-  --accent2:#3fa0ff;  /* sapphire */
-  --good:#1ee9a6;
+  --accent:#7c5cff;
+  --accent2:#3fa0ff;
   --shadow: 0 22px 60px rgba(0,0,0,.55);
   --r: 20px;
 }
@@ -42,12 +39,13 @@ body{
   margin: 22px auto 30px;
 }
 
+/* Header */
 .top{
   display:flex;
   align-items:center;
   justify-content:space-between;
   gap:12px;
-  padding: 14px 14px;
+  padding: 14px;
   border-radius: var(--r);
   border: 1px solid var(--stroke);
   background: linear-gradient(180deg, var(--panel), rgba(0,0,0,.24));
@@ -55,19 +53,18 @@ body{
 }
 
 .brand{ display:flex; align-items:center; gap:12px; }
-.logoMark{
-  width:42px; height:42px; border-radius: 14px;
-  background:
-    radial-gradient(circle at 30% 30%, rgba(255,255,255,.35), transparent 55%),
-    linear-gradient(135deg, rgba(124,92,255,.95), rgba(63,160,255,.9));
-  border: 1px solid rgba(255,255,255,.16);
+.brandLogo{
+  width:46px;
+  height:46px;
+  border-radius: 16px;
+  object-fit:cover;
+  border:1px solid rgba(255,255,255,.16);
   box-shadow: 0 18px 38px rgba(0,0,0,.45);
 }
 .brandName{ font-weight: 950; letter-spacing:.2px; font-size: 18px; }
-.brandSub{ color: var(--muted); font-size: 12px; margin-top: 2px; }
-
 .rightActions{ display:flex; align-items:center; gap:10px; }
 
+/* Buttons */
 .btn{
   appearance:none;
   border: 1px solid rgba(255,255,255,.16);
@@ -76,17 +73,17 @@ body{
   padding: 10px 12px;
   border-radius: 14px;
   cursor:pointer;
-  font-weight: 800;
+  font-weight: 900;
   text-decoration:none;
   transition: transform .15s ease, box-shadow .15s ease, border-color .15s ease;
 }
 .btn:hover{
   transform: translateY(-1px);
-  border-color: rgba(124,92,255,.45);
-  box-shadow: 0 18px 40px rgba(124,92,255,.12);
+  border-color: rgba(124,92,255,.55);
+  box-shadow: 0 18px 40px rgba(124,92,255,.14);
 }
 .btn.ghost{
-  background: transparent;
+  background: rgba(0,0,0,.15);
 }
 
 /* Main panel */
@@ -114,8 +111,7 @@ body{
   padding: 10px 12px;
   border-radius: 14px;
   cursor:pointer;
-  font-weight: 900;
-  letter-spacing: .2px;
+  font-weight: 950;
   transition: .15s ease;
 }
 .tab:hover{ border-color: rgba(255,255,255,.22); transform: translateY(-1px); }
@@ -143,7 +139,7 @@ body{
   border: none;
   outline:none;
   color: var(--text);
-  font-weight: 700;
+  font-weight: 800;
   font-size: 14px;
 }
 .hint{ color: var(--muted); font-size: 12px; white-space:nowrap; }
@@ -151,11 +147,10 @@ body{
 /* Grid / Cards */
 .grid{
   display:grid;
-  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
   gap: 14px;
   padding: 14px;
 }
-
 .card{
   position:relative;
   border-radius: 18px;
@@ -180,7 +175,6 @@ body{
   transition: opacity .16s ease;
 }
 .card:hover::after{ opacity:1; }
-
 .badge{
   position:absolute; top:12px; left:12px;
   padding: 7px 10px;
@@ -189,11 +183,9 @@ body{
   background: rgba(0,0,0,.28);
   font-size: 12px;
   font-weight: 950;
-  letter-spacing:.2px;
 }
-
 .thumb{
-  height: 150px;
+  height: 160px;
   display:flex;
   align-items:center;
   justify-content:center;
@@ -206,12 +198,10 @@ body{
   object-fit: contain;
   filter: drop-shadow(0 16px 24px rgba(0,0,0,.55));
 }
-
 .meta{ padding: 12px; }
 .name{
   font-weight: 950;
   font-size: 14px;
-  letter-spacing:.2px;
 }
 .sub{
   margin-top: 6px;
@@ -224,19 +214,15 @@ body{
 .stars{ letter-spacing: 1px; color: rgba(255,255,255,.85); }
 
 /* Footer */
-.foot{
-  margin-top: 12px;
-  text-align:center;
-  color: var(--muted);
-  font-size: 12px;
-  opacity:.9;
-}
-.footText{ padding: 10px; }
+.foot{ margin-top: 12px; text-align:center; }
+.footText{ padding: 10px; color: var(--muted); font-size: 12px; }
+.footText a{ color: var(--muted); text-decoration:none; }
+.footText a:hover{ text-decoration:underline; }
+.dot{ margin: 0 8px; opacity:.7; }
 
 /* Modal */
 .modal{ border:none; padding:0; background:transparent; }
 .modal::backdrop{ background: rgba(0,0,0,.72); }
-
 .modalInner{
   width: min(980px, calc(100vw - 28px));
   margin: 10vh auto;
@@ -246,18 +232,16 @@ body{
   box-shadow: var(--shadow);
   overflow:hidden;
 }
-
 .modalTop{
   display:flex;
   align-items:flex-start;
   justify-content:space-between;
   gap:12px;
-  padding: 14px 14px;
+  padding: 14px;
   border-bottom: 1px solid rgba(255,255,255,.10);
 }
 .mName{ font-size: 20px; font-weight: 950; }
 .mMeta{ margin-top:4px; font-size: 12px; color: var(--muted); }
-
 .iconBtn{
   border: 1px solid rgba(255,255,255,.12);
   background: rgba(255,255,255,.06);
@@ -266,14 +250,12 @@ body{
   padding: 9px 11px;
   cursor:pointer;
 }
-
 .modalBody{
   display:grid;
   grid-template-columns: 1.05fr .95fr;
   gap: 14px;
   padding: 14px;
 }
-
 .preview{
   border: 1px solid rgba(255,255,255,.10);
   background: rgba(0,0,0,.20);
@@ -289,14 +271,12 @@ body{
   object-fit: contain;
   filter: drop-shadow(0 18px 30px rgba(0,0,0,.6));
 }
-
 .stats{
   border: 1px solid rgba(255,255,255,.10);
   background: rgba(0,0,0,.16);
   border-radius: 18px;
   padding: 12px;
 }
-
 .statRow{
   display:grid;
   grid-template-columns: 70px 1fr 40px;
@@ -304,9 +284,8 @@ body{
   align-items:center;
   margin: 10px 0;
 }
-.statLabel{ color: var(--muted); font-size: 12px; font-weight: 800; }
-.statVal{ text-align:right; font-size: 12px; color: rgba(255,255,255,.85); font-weight: 900; }
-
+.statLabel{ color: var(--muted); font-size: 12px; font-weight: 900; }
+.statVal{ text-align:right; font-size: 12px; font-weight: 900; opacity:.9; }
 .bar{
   height: 12px;
   border-radius: 999px;
@@ -320,13 +299,11 @@ body{
   border-radius: 999px;
   background: linear-gradient(90deg, rgba(124,92,255,.95), rgba(63,160,255,.90));
 }
-
 .divider{
   height:1px;
   background: rgba(255,255,255,.10);
   margin: 12px 0;
 }
-
 .metaGrid{
   display:grid;
   grid-template-columns: 1fr 1fr;
@@ -338,7 +315,13 @@ body{
   border-radius: 16px;
   padding: 10px;
 }
-.metaTitle{ color: var(--muted); font-size: 11px; font-weight: 900; text-transform:uppercase; letter-spacing:.12em; }
+.metaTitle{
+  color: var(--muted);
+  font-size: 11px;
+  font-weight: 900;
+  text-transform:uppercase;
+  letter-spacing:.12em;
+}
 .metaValue{ margin-top:6px; font-weight: 950; }
 
 @media (max-width: 900px){
