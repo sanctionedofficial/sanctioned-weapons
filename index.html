@@ -3,11 +3,13 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Sanctioned | Database</title>
+  <title>Sanctioned Armory Index</title>
   <link rel="stylesheet" href="style.css" />
+  <link rel="icon" type="image/png" href="assets/logo.png" />
 </head>
 <body>
 
+  <!-- Background -->
   <div class="bg">
     <div class="glow g1"></div>
     <div class="glow g2"></div>
@@ -15,22 +17,27 @@
   </div>
 
   <div class="wrap">
+
+    <!-- Header -->
     <header class="top">
       <div class="brand">
-        <div class="logoMark"></div>
+        <img class="brandLogo" src="assets/logo.png" alt="Sanctioned" />
         <div class="brandText">
-          <div class="brandName">Sanctioned Database</div>
-          <div class="brandSub">Tier System • Clean UI • GitHub Pages</div>
+          <div class="brandName">Sanctioned Armory Index</div>
         </div>
       </div>
 
       <div class="rightActions">
         <button id="randomBtn" class="btn ghost">Random</button>
-        <a class="btn" target="_blank" rel="noreferrer" href="#" id="downloadJson">Export JSON</a>
+        <a class="btn ghost" href="https://sanctionedrp.com/" target="_blank" rel="noreferrer">Forum</a>
+        <a class="btn" href="https://discord.gg/hvwnGDbawP" target="_blank" rel="noreferrer">Discord</a>
       </div>
     </header>
 
+    <!-- Main Panel -->
     <section class="panel">
+
+      <!-- Category Tabs -->
       <div class="tabs" id="tabs">
         <button class="tab active" data-cat="Tier 1">Tier 1</button>
         <button class="tab" data-cat="Tier 2">Tier 2</button>
@@ -38,21 +45,28 @@
         <button class="tab" data-cat="Drugs">Drugs</button>
       </div>
 
+      <!-- Search + Count -->
       <div class="panelRow">
         <div class="searchBox">
-          <input id="search" placeholder="Search items..." autocomplete="off" />
-          <div class="hint" id="count"></div>
+          <input id="search" placeholder="Search..." autocomplete="off" />
+          <div class="hint" id="count">0 items</div>
         </div>
       </div>
 
+      <!-- Grid -->
       <div class="grid" id="grid"></div>
     </section>
 
     <footer class="foot">
-      <div class="footText">Built for Sanctioned • Clean, professional, and easy to update.</div>
+      <div class="footText">
+        <a href="https://sanctionedrp.com/" target="_blank" rel="noreferrer">sanctionedrp.com</a>
+        <span class="dot">•</span>
+        <a href="https://discord.gg/hvwnGDbawP" target="_blank" rel="noreferrer">discord.gg/hvwnGDbawP</a>
+      </div>
     </footer>
   </div>
 
+  <!-- Modal -->
   <dialog id="modal" class="modal">
     <div class="modalInner">
       <div class="modalTop">
@@ -111,6 +125,7 @@
               <div class="metaValue" id="mStars"></div>
             </div>
           </div>
+
         </div>
       </div>
     </div>
