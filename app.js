@@ -1,4 +1,5 @@
-// 0-100 stats. Keep it simple.
+// Replace images and stats with your real items.
+// Stats: 0-100
 const ITEMS = [
   // Tier 1
   { name:"Glock 19", category:"Tier 1", stars:2, image:"images/glock19.png", stats:{damage:55,recoil:35,accuracy:60,range:40,fireRate:65}},
@@ -23,7 +24,6 @@ const tabs = document.querySelectorAll(".tab");
 const search = document.getElementById("search");
 const count = document.getElementById("count");
 const randomBtn = document.getElementById("randomBtn");
-const downloadJson = document.getElementById("downloadJson");
 
 // Modal elements
 const modal = document.getElementById("modal");
@@ -48,8 +48,10 @@ const vFr  = document.getElementById("vFr");
 
 let activeCat = "Tier 1";
 
-function stars(n){
-  return "★".repeat(n || 0) + "☆".repeat(Math.max(0, 5 - (n || 0)));
+function starLine(n){
+  const filled = "★".repeat(n || 0);
+  const empty = "☆".repeat(Math.max(0, 5 - (n || 0)));
+  return filled + empty;
 }
 
 function matches(item){
@@ -64,7 +66,7 @@ function card(item){
   el.className = "card";
   el.innerHTML = `
     <div class="badge">${item.category}</div>
-    <div class="thumb"><img src="${item.image}" alt="${item.name}"></div>
+    <div class="thumb"><img src="${item.image}" alt="${item.name}" /></div>
     <div class="meta">
       <div class="name">${item.name}</div>
       <div class="sub">
@@ -96,7 +98,7 @@ function openModal(item){
   mImg.src = item.image;
 
   mCat.textContent = item.category;
-  mStars.textContent = stars(item.stars);
+  mStars.textContent = starLine(item.stars);
 
   const s = item.stats || {};
   setBar(bDmg, vDmg, s.damage);
@@ -128,19 +130,5 @@ randomBtn.addEventListener("click", () => {
 
 closeModal.addEventListener("click", () => modal.close());
 modal.addEventListener("click", (e) => { if (e.target === modal) modal.close(); });
-
-// Export JSON (so you can edit data easily later)
-downloadJson.addEventListener("click", (e) => {
-  e.preventDefault();
-  const blob = new Blob([JSON.stringify(ITEMS, null, 2)], {type:"application/json"});
-  const url = URL.createObjectURL(blob);
-  const a = document.createElement("a");
-  a.href = url;
-  a.download = "items.json";
-  document.body.appendChild(a);
-  a.click();
-  a.remove();
-  URL.revokeObjectURL(url);
-});
 
 render();
